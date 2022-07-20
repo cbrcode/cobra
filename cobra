@@ -1,0 +1,22 @@
+#/usr/bin/python3
+
+"""
+Cobra | cobra.py
+===========================
+
+Main compile CLI 
+"""
+
+from modules.imports import *
+import sys
+
+fileList = getFileList(sys.argv[1])
+
+mainFile = False
+for filename in fileList:
+    if filename.lower() == "main.py":
+        mainFile = True
+
+if not mainFile: raise Exception("No main.py file in directory specified")
+
+finalFileList = handleImports(sys.argv[1], fileList)
